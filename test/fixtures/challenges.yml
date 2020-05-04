@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  puzzle: one
+  solved: false
+  solvetime: 1
+
+two:
+  user: two
+  puzzle: two
+  solved: false
+  solvetime: 1

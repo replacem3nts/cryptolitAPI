@@ -3,4 +3,9 @@ class PuzzlesController < ApplicationController
         puzzles = Puzzle.all
         render json: puzzles
     end
+
+    def show
+        puzzle = Puzzle.find(params[:id])
+        render json: puzzle
+    end
 end

@@ -1,11 +1,16 @@
 class ChallengesController < ApplicationController
     def create
-        Challenge.generate(challenge_params)
+        @challenge = Challenge.make_new(challenge_params)
+        if @challenge
+            render json: @challenge
+        else
+            render json: {message: "Sorry, you've completed all the puzzles of that difficulty!"}
+        end
     end
 
     private
 
     def challenge_params
-        params.require(:challenge).permit(:user, :difficulty)
+        params.permit(:difficulty, :user)
     end
 end

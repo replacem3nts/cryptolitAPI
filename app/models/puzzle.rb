@@ -2,9 +2,7 @@ class Puzzle < ApplicationRecord
     has_many :challenges
 
 
-    def self.rand_by_difficulty(difficulty, user_puzzles)
-        all_puzzles = Puzzle.find_by(difficulty: difficulty)
-        choose_array = (all_puzzles - user_puzzles)
-        choose_array.sample
+    def self.id_by_diff(difficulty)
+        id_array = where(difficulty: difficulty).map(&:id)
     end
 end

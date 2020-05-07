@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_191758) do
+ActiveRecord::Schema.define(version: 2020_05_07_004335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_191758) do
     t.integer "solvetime", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "cryptogram"
+    t.string "solvekey"
     t.index ["puzzle_id"], name: "index_challenges_on_puzzle_id"
     t.index ["user_id"], name: "index_challenges_on_user_id"
   end

@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
     def create
-        fkeys = Randomizer.get_user_puzzle(challenge_params)
+        fkeys = Randomizer.get_user_puzzle(challenge_params[:difficulty], challenge_params[:user_id] )
         @challenge = Challenge.create(fkeys)
         if @challenge.valid?
             render json: @challenge
@@ -26,6 +26,6 @@ class ChallengesController < ApplicationController
     end
 
     def challenge_params
-        params.permit(:difficulty, :user)
+        params.permit(:difficulty, :user_id)
     end
 end

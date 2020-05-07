@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
-        response json: user
+        render json: user
     end
 
     def show
@@ -19,5 +19,4 @@ class UsersController < ApplicationController
     def user_params
         params.permit(:username)
     end
-
 end

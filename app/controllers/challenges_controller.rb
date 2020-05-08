@@ -10,9 +10,9 @@ class ChallengesController < ApplicationController
     end
 
     def solved
-        @challenge = get_challenge 
-        if Cipher.unhex(@challenge.solvekey) == params[:key]
-            @challenge.update(solve_challenge_params)
+        @challenge = get_challenge
+        if @challenge.solvekey == Cipher.level_one_key(params[:key])
+            @challenge.update(solve_challenge_params) if !@challenge.solved 
             render json: @challenge
         else
             render json: {solved: false}
@@ -23,6 +23,10 @@ class ChallengesController < ApplicationController
 
     def get_challenge
         Challenge.find(params[:id])
+    end
+
+    def solve_challenge_params
+        params.permit(:solved, :solvetime)
     end
 
     def challenge_params

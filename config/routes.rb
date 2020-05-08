@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   patch '/challenges/:id/solved', to: 'challenges#solved'
+  get '/challenges/:id/answer', to: 'challenges#answer'
   resources :challenges, only: [:create, :update]
   get '/users', to: 'users#index'
   post '/users', to: 'users#create'

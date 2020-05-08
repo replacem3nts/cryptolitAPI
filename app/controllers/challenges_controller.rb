@@ -15,7 +15,17 @@ class ChallengesController < ApplicationController
             @challenge.update(solve_challenge_params) if !@challenge.solved 
             render json: @challenge
         else
-            render json: {solved: false}
+            render json: {message: "Sorry, that's not it. Keep trying though!"}
+        end
+    end
+
+    def answer
+        @challenge = Challenge.find(params[:id])
+        if @challenge.solved
+            @puzzle = @challenge.puzzle
+            render json: @puzzle.show_answer
+        else
+            render json: {message: "Sorry, you can't view this puzzle!"}
         end
     end
 

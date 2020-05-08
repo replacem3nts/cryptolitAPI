@@ -7,7 +7,7 @@ class Challenge < ApplicationRecord
   private
 
   def add_crypto_and_key
-    self.cryptogram = Cipher.level_one_crypto(self.puzzle.content)
+    self.cryptogram = Cipher.level_one_crypto(self.puzzle.content, self.puzzle.difficulty)
     self.solvekey = Cipher.level_one_key(self.puzzle.content)
   end
 

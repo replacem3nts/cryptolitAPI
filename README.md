@@ -41,7 +41,7 @@ $ open index.html
 
 ## Domain Model 🗺
 <h2 align="center">
-    <img src="https://github.com/replacem3nts/cryptolit/blob/master/images/domain_model.png" alt="CryptoLit Domain Model" width="600px">
+    <img src="https://github.com/replacem3nts/cryptolitAPI/blob/master/public/domain_model.png" alt="CryptoLit Domain Model" width="600px">
     <br>
 <h2>
 

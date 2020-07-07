@@ -1,8 +1,9 @@
 # 🗝📖   CryptoLit   📖🗝
-***
 CryptoLit is full-stack web application that challenges you to solve cryptograms of varying difficulties based on famous lines from English Literature. The application comes out of the box with 100 puzzles with three levels of difficulty, but can be customized to make crytograms from whatever text you like!
 
 This repository is for the backend and is designed to be used in tandem with the frontend. This API can be used with a different frontend and if you'd like to customize the puzzles on a subject of your choice, this may be a good option to reflect that choice. You can find the frontend repository [here](https://github.com/replacem3nts/cryptolit).
+
+***
 
 ## Table of contents
 - [Getting Started](#getting-started)
@@ -87,7 +88,7 @@ $ rails server
 What follows is an overview of the process that happens when a user opens a new puzzle and later wants to check an answer:
 1. The user selects a difficulty level and clicks 'Get a New Puzzle' which submits a fetch with the user_id and difficulty level to the backend.
 2. The challenges controller calls on the 'Randomizer' PORO which chooses a random puzzle_id that the user has not created a challenge from and creates a challenge.
-3. The challenge model has a 'before_create' action that calls on the 'Cipher' PORO to encrypt the text of the puzzle (based on difficulty level) and create an encrypted solvekey. The cryptogram is then rendered using the challenge serializer.
+3. The challenge model has a 'before_create' action that calls on the 'Cipher' PORO to encode the text of the puzzle (based on difficulty level) and create an encrypted solvekey. The cryptogram is then rendered using the challenge serializer.
 4. The cryptogram is created by either rotation or reshuffling the aphabet to build a substitution cipher then render an encoded version of the text.
 5. The solvekey is created by stripping characters and duplicate letters from the crypotgram, then encyrpting that string by running it through Digest::SHA256.
 6. This manner of creating a solvekey means that in the frontend, the same process of stripping characters and duplicate letters can be used to send a short string to the backend. That string can then be run through the same Digest::SHA256 module and compared with the solvekey; if the two match, the solved field is flipped to true--which unlocks a custom method from the puzzle model allowing the solution to be exposed to the user, if the two don't match, an error message is returned to the front end.
